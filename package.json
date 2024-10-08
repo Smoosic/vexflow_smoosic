@@ -1,0 +1,96 @@
+{
+  "name": "vexflow_smoosic",
+  "version": "4.2.8",
+  "description": "A JavaScript library for rendering music notation and guitar tablature.",
+  "exports": {
+    ".": {
+      "types": "./build/esm/types/entry/vexflow-debug.d.ts",
+      "require": "./build/cjs/vexflow-debug.js",
+      "browser": "./build/cjs/vexflow-debug.js",
+      "import": "./build/esm/entry/vexflow-debug.js"
+    }
+  },
+  "main": "./build/cjs/vexflow-debug.js",
+  "module": "./build/esm/entry/vexflow-debug.js",
+  "types": "./build/types/entry/vexflow.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AaronDavidNewman/vexflow_smoosic.git"
+  },
+  "author": {
+    "name": "Aaron Newman",
+    "email": "aarondnewman@gmail.com"
+  },
+  "license": "MIT",
+  "files": [
+    "build",
+    "src",
+    "entry",
+    "tests/flow.html",
+    "tests/flow.css",
+    "tests/support",
+    "release",
+    "AUTHORS.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/AaronDavidNewman/vexflow_smoosic/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/qunit": "^2.19.5",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "canvas": "^2.11.2",
+    "circular-dependency-plugin": "^5.2.2",
+    "concurrently": "^8.0.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "grunt": "^1.6.1",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-qunit": "^7.0.0",
+    "grunt-eslint": "^24.0.1",
+    "grunt-webpack": "^5.0.0",
+    "jsdom": "^21.1.1",
+    "jspdf": "^2.5.1",
+    "npm": "^9.6.3",
+    "opener": "^1.5.2",
+    "opentype.js": "^1.3.4",
+    "prettier": "^2.8.7",
+    "puppeteer": "^19.11.1",
+    "qunit": "^2.19.4",
+    "recursive-copy": "^2.0.14",
+    "release-it": "^15.10.0",
+    "sharp": "^0.32.0",
+    "string-replace-loader": "^3.1.0",
+    "svg2pdf.js": "^2.2.1",
+    "terser-webpack-plugin": "^5.3.7",
+    "ts-loader": "^9.4.2",
+    "tsc-watch": "^6.0.4",
+    "typedoc": "^0.24.6",
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0"
+  },
+  "scripts": {
+    "start": "grunt",
+    "test": "grunt test",
+    "reference": "grunt reference",
+    "test:reference": "grunt test:reference",
+    "test:reference:cache": "grunt test:reference:cache"
+  },
+  "publishConfig": {
+    "@AaronDavidNewman:registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "music",
+    "notation",
+    "piano",
+    "guitar",
+    "tablature"
+  ]
+}

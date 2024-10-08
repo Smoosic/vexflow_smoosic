@@ -1,0 +1,1 @@
+{"version":3,"file":"repeatnote.d.ts","sourceRoot":"","sources":["../../../src/repeatnote.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,SAAS,EAAE,gBAAgB,EAAE,MAAM,aAAa,CAAC;AAC1D,OAAO,EAAE,UAAU,EAAE,MAAM,QAAQ,CAAC;AAYpC,qBAAa,UAAW,SAAQ,SAAS;IACvC,MAAM,KAAK,QAAQ,IAAI,MAAM,CAE5B;gBAEW,IAAI,EAAE,MAAM,EAAE,UAAU,CAAC,EAAE,UAAU,EAAE,OAAO,CAAC,EAAE,gBAAgB;CAO9E"}

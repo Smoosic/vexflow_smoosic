@@ -1,0 +1,86 @@
+import { Element } from './element';
+import { Fraction } from './fraction';
+import { Modifier } from './modifier';
+import { ModifierContext } from './modifiercontext';
+import { Stave } from './stave';
+import { TickContext } from './tickcontext';
+import { Tuplet } from './tuplet';
+import { Voice } from './voice';
+export interface FormatterMetrics {
+    duration: string;
+    freedom: {
+        left: number;
+        right: number;
+    };
+    iterations: number;
+    space: {
+        used: number;
+        mean: number;
+        deviation: number;
+    };
+}
+export declare abstract class Tickable extends Element {
+    static get CATEGORY(): string;
+    protected ignore_ticks: boolean;
+    protected tupletStack: Tuplet[];
+    protected tuplet?: Tuplet;
+    protected ticks: Fraction;
+    protected center_x_shift: number;
+    protected voice?: Voice;
+    protected width: number;
+    protected x_shift: number;
+    protected modifierContext?: ModifierContext;
+    protected tickContext?: TickContext;
+    protected modifiers: Modifier[];
+    protected tickMultiplier: Fraction;
+    protected formatterMetrics: FormatterMetrics;
+    protected intrinsicTicks: number;
+    protected align_center: boolean;
+    private _preFormatted;
+    private _postFormatted;
+    constructor();
+    reset(): this;
+    getTicks(): Fraction;
+    shouldIgnoreTicks(): boolean;
+    setIgnoreTicks(flag: boolean): this;
+    setWidth(width: number): void;
+    getWidth(): number;
+    setXShift(x: number): this;
+    getXShift(): number;
+    getX(): number;
+    getFormatterMetrics(): FormatterMetrics;
+    getCenterXShift(): number;
+    setCenterXShift(centerXShift: number): this;
+    isCenterAligned(): boolean;
+    setCenterAlignment(align_center: boolean): this;
+    getVoice(): Voice;
+    setVoice(voice: Voice): void;
+    getTuplet(): Tuplet | undefined;
+    getTupletStack(): Tuplet[];
+    resetTuplet(tuplet?: Tuplet): this;
+    setTuplet(tuplet: Tuplet): this;
+    addToModifierContext(mc: ModifierContext): this;
+    addModifier(modifier: Modifier, index?: number): this;
+    getModifiers(): Modifier[];
+    setTickContext(tc: TickContext): void;
+    checkTickContext(message?: string): TickContext;
+    preFormat(): void;
+    set preFormatted(value: boolean);
+    get preFormatted(): boolean;
+    postFormat(): this;
+    set postFormatted(value: boolean);
+    get postFormatted(): boolean;
+    getIntrinsicTicks(): number;
+    setIntrinsicTicks(intrinsicTicks: number): void;
+    getTickMultiplier(): Fraction;
+    applyTickMultiplier(numerator: number, denominator: number): void;
+    setDuration(duration: Fraction): void;
+    getAbsoluteX(): number;
+    setModifierContext(mc?: ModifierContext): this;
+    getModifierContext(): ModifierContext | undefined;
+    checkModifierContext(): ModifierContext;
+    abstract getStave(): Stave | undefined;
+    abstract setStave(stave: Stave): this;
+    abstract getMetrics(): any;
+}
+//# sourceMappingURL=tickable.d.ts.map

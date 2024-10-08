@@ -1,5 +1,6 @@
 build/esm/src
 build/esm/tests
+docs/*
 reference
 demos/node/output
 node_modules
