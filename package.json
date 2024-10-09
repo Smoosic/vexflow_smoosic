@@ -15,7 +15,7 @@
   "types": "./build/types/entry/vexflow.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AaronDavidNewman/vexflow_smoosic.git"
+    "url": "https://github.com/smoosic/vexflow_smoosic.git"
   },
   "author": {
     "name": "Aaron Newman",
@@ -33,7 +33,7 @@
     "AUTHORS.md"
   ],
   "bugs": {
-    "url": "https://github.com/AaronDavidNewman/vexflow_smoosic/issues"
+    "url": "https://github.com/Smoosic/vexflow_smoosic/issues"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
