@@ -151,7 +151,7 @@ function readEnvironmentVariables() {
   // Control the type of source maps that will be produced.
   // See: https://webpack.js.org/configuration/devtool/
   // In version 3.0.9 this environment variable was called VEX_GENMAP.
-  DEVTOOL = 'source-map'; // for production builds with high quality source maps.
+  DEVTOOL = 'eval-source-map'; // for production builds with high quality source maps.
   if (DEVTOOL === 'false') {
     DEVTOOL = false;
   }
