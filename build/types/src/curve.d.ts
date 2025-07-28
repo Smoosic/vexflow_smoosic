@@ -12,6 +12,7 @@ export interface CurveOptions {
     position?: string | number;
     position_end?: string | number;
     invert?: boolean;
+    openingDirection?: 'up' | 'down' | 'auto';
 }
 export declare enum CurvePosition {
     NEAR_HEAD = 1,

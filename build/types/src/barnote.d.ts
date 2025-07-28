@@ -1,6 +1,6 @@
 import { ModifierContext } from './modifiercontext';
 import { Note } from './note';
-import { BarlineType } from './stavebarline';
+import { Barline, BarlineType } from './stavebarline';
 /**
  * A `BarNote` is used to render bar lines (from `barline.ts`). `BarNote`s can
  * be added to a voice and rendered in the middle of a stave. Since it has no
@@ -16,6 +16,7 @@ export declare class BarNote extends Note {
         widths: Record<string, number>;
     };
     protected type: BarlineType;
+    barline: Barline;
     constructor(type?: string | BarlineType);
     /** Get the type of bar note.*/
     getType(): BarlineType;

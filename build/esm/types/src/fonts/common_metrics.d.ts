@@ -151,6 +151,84 @@ export declare const CommonMetrics: {
         };
     };
     ornament: {
+        ornamentShortTrill: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentMordent: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentTurn: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentTurnSlash: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentTrill: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompSlideTrillDAnglebert: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompDoubleCadenceUpperPrefix: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompTrillSuffixDandrieu: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompTrillLowerSuffix: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompSlideTrillBach: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompDoubleCadenceUpperPrefixTurn: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentPrecompAppoggTrill: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
+        ornamentTremblement: {
+            xOffset: number;
+            yOffset: number;
+            stemUpYOffset: number;
+            reportedWidth: number;
+        };
         brassScoop: {
             xOffset: number;
             yOffset: number;

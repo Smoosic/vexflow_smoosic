@@ -537,5 +537,13 @@ module.exports = {
   accidentalNarrowReversedFlatAndFlat: null,
   accidentalWilsonPlus: null,
   accidentalWilsonMinus: null,
-
+  // electronic music symbols
+  elecMIDIController0: null,
+  elecMIDIController40: null,
+  elecMIDIController60: null,
+  elecMIDIController80: null,
+  elecMIDIController100: null,
+  wiggleSquareWave: null,
+  wiggleSawtooth: null,
+  wiggleWavy: null
 };

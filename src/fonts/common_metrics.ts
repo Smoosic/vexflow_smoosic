@@ -157,13 +157,77 @@ export const CommonMetrics = {
   },
 
   ornament: {
-    brassScoop: {
+    ornamentShortTrill: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 30,
+    }, ornamentMordent: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 30,
+    }, ornamentTurn: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 30,
+    }, ornamentTurnSlash: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 30,
+    }, ornamentTrill: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 30,
+    }, ornamentPrecompSlideTrillDAnglebert: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 46,
+    }, ornamentPrecompDoubleCadenceUpperPrefix: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 49,
+    }, ornamentPrecompTrillSuffixDandrieu: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 39,
+    }, ornamentPrecompTrillLowerSuffix: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 39,
+    }, ornamentPrecompSlideTrillBach: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 34,
+    }, ornamentPrecompDoubleCadenceUpperPrefixTurn: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 54,
+    }, ornamentPrecompAppoggTrill: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 45,
+    }, ornamentTremblement: {
+      xOffset: 0,
+      yOffset: 0,
+      stemUpYOffset: 0,
+      reportedWidth: 39,
+    }, brassScoop: {
       xOffset: -12,
       yOffset: 0,
       stemUpYOffset: 0,
       reportedWidth: 20,
-    },
-    brassDoitMedium: {
+    }, brassDoitMedium: {
       xOffset: 16,
       yOffset: 0,
       stemUpYOffset: 0,

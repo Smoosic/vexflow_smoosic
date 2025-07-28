@@ -8,7 +8,17 @@ const process = require('process');
 // eslint-disable-next-line
 const opentype = require('opentype.js');
 const prettier = require('prettier');
-const prettierConfig = require('../../.prettierrc.js');
+const prettierConfig = {
+  "useTabs": false,      
+  "printWidth": 80,      
+  "tabWidth": 2,         
+  "singleQuote": false,  
+  "trailingComma": "none",
+  "jsxBracketSameLine": false,
+  "parser": "babylon",
+  "noSemi": true,
+  "rcVerbose": true
+};
 
 function LogError(...args) {
   // eslint-disable-next-line
