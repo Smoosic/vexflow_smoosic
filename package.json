@@ -1,6 +1,6 @@
 {
   "name": "vexflow_smoosic",
-  "version": "4.2.9",
+  "version": "4.2.10",
   "description": "A JavaScript library for rendering music notation and guitar tablature.",
   "exports": {
     ".": {
