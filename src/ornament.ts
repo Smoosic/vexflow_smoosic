@@ -76,19 +76,21 @@ export class Ornament extends Modifier {
     for (let i = 0; i < ornaments.length; ++i) {
       const ornament = ornaments[i];
       const increment = 2;
-
+      const note = ornament.checkAttachedNote();
+      const glyphWidth = note.getGlyphProps().getWidth();
+      const offset = ornament.reportedWidth - glyphWidth;
       if (Ornament.ornamentRelease.indexOf(ornament.type) >= 0) {
         ornament.x_shift += right_shift + 2;
       }
       if (Ornament.ornamentAttack.indexOf(ornament.type) >= 0) {
         ornament.x_shift -= left_shift + 2;
-      }
+      }      
       if (ornament.reportedWidth && ornament.x_shift < 0) {
         left_shift += ornament.reportedWidth;
       } else if (ornament.reportedWidth && ornament.x_shift >= 0) {
-        right_shift += ornament.reportedWidth + Ornament.minPadding;
+        right_shift += offset;
       } else {
-        width = Math.max(ornament.getWidth(), width);
+        width = Math.max(offset, width);
       }
       // articulations above/below the line can be stacked.
       if (Ornament.ornamentArticulation.indexOf(ornament.type) >= 0) {
