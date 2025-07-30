@@ -78,20 +78,19 @@ export class Ornament extends Modifier {
       const increment = 2;
       const note = ornament.checkAttachedNote();
       const glyphWidth = note.getGlyphProps().getWidth();
+      const afterNote = Ornament.ornamentRelease.indexOf(ornament.type) >= 0;
+      const beforeNote = Ornament.ornamentAttack.indexOf(ornament.type) >= 0;
       const offset = ornament.reportedWidth - glyphWidth;
-      if (Ornament.ornamentRelease.indexOf(ornament.type) >= 0) {
-        ornament.x_shift += right_shift + 2;
+      if (beforeNote) {
+        ornament.x_shift -= right_shift + 2;
+        left_shift += (ornament.reportedWidth / 2) + 2;
       }
-      if (Ornament.ornamentAttack.indexOf(ornament.type) >= 0) {
-        ornament.x_shift -= left_shift + 2;
-      }      
-      if (ornament.reportedWidth && ornament.x_shift < 0) {
-        left_shift += ornament.reportedWidth;
-      } else if (ornament.reportedWidth && ornament.x_shift >= 0) {
-        right_shift += offset;
-      } else {
-        width = Math.max(offset, width);
+      else if (afterNote) {
+        ornament.x_shift += left_shift + 2;
+        right_shift += ornament.reportedWidth + left_shift + 2;
       }
+      width = Math.max(offset, width);
+
       // articulations above/below the line can be stacked.
       if (Ornament.ornamentArticulation.indexOf(ornament.type) >= 0) {
         // Unfortunately we don't know the stem direction.  So we base it
