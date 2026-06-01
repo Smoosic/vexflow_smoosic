@@ -29,6 +29,7 @@ function brushRollRasquedo(options: TestOptions): void {
   const stave1 = f.Stave({ width: 250 }).setEndBarType(Barline.type.DOUBLE);
 
   const notes1 = score.notes('(a3 e4 a4)/4, (c4 e4 g4), (c4 e4 g4), (c4 e4 g4)', { stem: 'up' });
+  const notes1a = score.notes('f3/4, c5, c5, c5', { stem: 'up' });
 
   notes1[0].addStroke(0, new Stroke(1));
   notes1[1]
@@ -40,8 +41,10 @@ function brushRollRasquedo(options: TestOptions): void {
   notes1[3].addStroke(0, new Stroke(2));
 
   const voice1 = score.voice(notes1);
+  const voice1a=score.voice(notes1a);
+  const voices = [voice1, voice1a];
 
-  f.Formatter().joinVoices([voice1]).formatToStave([voice1], stave1);
+  f.Formatter().joinVoices(voices).formatToStave(voices, stave1);
 
   // bar 2
   const stave2 = f

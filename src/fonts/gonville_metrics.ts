@@ -393,7 +393,7 @@ export const GonvilleMetrics = {
       brassMuteClosed: {
         scale: 1.0,
         xOffset: 3,
-        yOffset: -9,
+        yOffset: -7,
         stemUpYOffset: 24,
         reportedWidth: 5,
       },

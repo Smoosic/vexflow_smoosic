@@ -475,7 +475,7 @@ const articulations: Record<string, ArticulationStruct> = {
   'a>': {
     aboveCode: 'articAccentAbove',
     belowCode: 'articAccentBelow',
-    between_lines: true,
+    between_lines: false,
   }, // Accent
   'a-': {
     aboveCode: 'articTenutoAbove',

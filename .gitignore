@@ -38,3 +38,5 @@ npm-debug.log
 # Eclipse
 .project
 .settings/
+build/types/src/version.d.ts
+/build/types
