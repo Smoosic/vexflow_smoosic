@@ -2,6 +2,9 @@
 // Author: Cyril Silverman
 // MIT License
 
+import { Accidental } from './accidental';
+import { Dot } from './dot';
+import { StaveNote } from './stavenote';
 import { Glyph } from './glyph';
 import { Modifier } from './modifier';
 import { ModifierContextState } from './modifiercontext';
@@ -80,14 +83,33 @@ export class Ornament extends Modifier {
       const glyphWidth = note.getGlyphProps().getWidth();
       const afterNote = Ornament.ornamentRelease.indexOf(ornament.type) >= 0;
       const beforeNote = Ornament.ornamentAttack.indexOf(ornament.type) >= 0;
+      const betweenNotes = Ornament.ornamentBetween.indexOf(ornament.type) >= 0;
       const offset = ornament.reportedWidth - glyphWidth;
       if (beforeNote) {
-        ornament.x_shift -= right_shift + 2;
-        left_shift += (ornament.reportedWidth / 2) + 2;
-      }
-      else if (afterNote) {
-        ornament.x_shift += left_shift + 2;
-        right_shift += ornament.reportedWidth + left_shift + 2;
+        let accidentalWidth = 0;
+        const accidentals = note.getModifiersByType(Accidental.CATEGORY);
+        accidentals.forEach((acc) => {
+          accidentalWidth = Math.max(accidentalWidth, acc.getWidth());
+        });
+        ornament.x_shift -= accidentalWidth;
+        const reportedWidth = accidentals.length > 0 ? ornament.reportedWidth : ornament.reportedWidth / 2;
+        left_shift += reportedWidth + 2;
+      } else if (afterNote) {
+        let headWidth = 5;
+        if (note instanceof StaveNote) {
+          const heads = note.noteHeads;
+          heads.forEach((head) => {
+            headWidth = Math.max(headWidth, head.getWidth() / 2);
+          });
+        }
+        const dots = note.getModifiersByType(Dot.CATEGORY);
+        headWidth += dots.length * 10;
+        headWidth += dots.length > 0 ? 2 : 5;
+        ornament.x_shift += headWidth + 2;
+        right_shift += ornament.reportedWidth + 2 + headWidth;
+      } else if (betweenNotes) {
+        // ornament.x_shift += left_shift/2 + 2;
+        right_shift += ornament.reportedWidth * 2 + left_shift + 2;
       }
       width = Math.max(offset, width);
 
@@ -152,9 +174,11 @@ export class Ornament extends Modifier {
    * note and overlapping the next beat/measure..
    */
   static get ornamentRelease(): string[] {
-    return ['doit', 'fall', 'fallLong', 'doitLong', 'jazzTurn', 'smear', 'flip'];
+    return ['doit', 'fall', 'fallLong', 'doitLong'];
   }
-
+  static get ornamentBetween(): string[] {
+    return ['jazzTurn', 'smear', 'flip'];
+  }
   /** ornamentArticulation goes above/below the note based on space availablity */
   static get ornamentArticulation(): string[] {
     return ['bend', 'plungerClosed', 'plungerOpen'];

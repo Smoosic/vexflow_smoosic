@@ -280,14 +280,15 @@ function drawOrnamentsWithAccidentals(options: TestOptions): void {
 
 function jazzOrnaments(options: TestOptions): void {
   const clefWidth = Glyph.getWidth('gClef', 38); // widest clef
+  let setClef = false;
 
   // Helper function.
   function draw(modifiers: Ornament[], keys: string[], x: number, width: number, y: number, stemDirection?: number) {
     // Helper function to create a StaveNote.
     const note = (keys: string[], duration: string, modifier: Ornament, stemDirection?: number) => {
-      const n = new StaveNote({ keys, duration, stem_direction: stemDirection })
-        .addModifier(modifier, 0)
-        .addModifier(new Accidental('b'), 0);
+      const n = new StaveNote({ keys, duration, stem_direction: stemDirection });
+      n.addModifier(modifier, 0);
+      n.addModifier(new Accidental('b'), 0);
       const dot = duration.indexOf('d') >= 0;
       if (dot) {
         Dot.buildAndAttach([n], { all: true });
@@ -295,7 +296,11 @@ function jazzOrnaments(options: TestOptions): void {
       return n;
     };
 
-    const stave = new Stave(x, y, width).addClef('treble').setContext(ctx).draw();
+    const stave = new Stave(x, y, width);
+    if (setClef) {
+      stave.addClef('treble');
+    }
+    stave.setContext(ctx).draw();
 
     const notes = [
       note(keys, '4d', modifiers[0], stemDirection),
@@ -341,8 +346,9 @@ function jazzOrnaments(options: TestOptions): void {
     f.Ornament('fall'),
     f.Ornament('doitLong'),
   ];
-
+  setClef = true;
   draw(mods, ['a/5'], curX, width, curY, -1);
+  setClef = false;
   curX += width;
 
   mods = [
@@ -366,6 +372,7 @@ function jazzOrnaments(options: TestOptions): void {
   draw(mods, ['a/5'], curX, width, curY, 1);
 
   // second line
+  setClef = true;
   curX = xStart;
   curY += staffHeight;
 
@@ -378,6 +385,7 @@ function jazzOrnaments(options: TestOptions): void {
   ];
 
   draw(mods, ['e/5'], curX, width, curY);
+  setClef = false;
   curX += width;
 
   mods = [
@@ -401,6 +409,7 @@ function jazzOrnaments(options: TestOptions): void {
   draw(mods, ['e/5'], curX, width, curY);
 
   // third line
+  setClef = true;
   curX = xStart;
   curY += staffHeight;
 
@@ -414,7 +423,7 @@ function jazzOrnaments(options: TestOptions): void {
 
   draw(mods, ['e/4'], curX, width, curY);
   curX += width;
-
+  setClef = false;
   mods = [
     // measure 8
     f.Ornament('fallLong'),
