@@ -197,13 +197,13 @@ export class Barline extends StaveModifier {
     staveCtx.fillRect(x - 5, topY, 1, botY - topY);
     staveCtx.fillRect(x - 2, topY, 3, botY - topY);
   }
-  drawStraightBrackets(stave: Stave, x: number, startY: number, yDirection: number, xDirection: number) {
+  drawStraightBrackets(stave: Stave, startX: number, startY: number, yDirection: number, xDirection: number) {
     const staveCtx = stave.checkContext();
     const rptBracketW = Math.round(1.5 * Tables.STAVE_LINE_DISTANCE) * xDirection;
     const rptBracketH = Math.round(0.6 * Tables.STAVE_LINE_DISTANCE);
     const rptBracketMH = Math.round(rptBracketH / 2);
     const brY = startY + yDirection;
-    const brX = x +  (-2 * xDirection);
+    const brX = xDirection > 0 ? startX -2 : startX;
     staveCtx.moveTo(brX, brY);
     staveCtx.lineTo(brX, brY + rptBracketH * (-1 * yDirection));
     staveCtx.lineTo(brX + rptBracketW, brY + rptBracketH * yDirection);
