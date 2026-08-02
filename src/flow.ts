@@ -51,7 +51,7 @@ import { RenderContext } from './rendercontext';
 import { Renderer, RendererBackends, RendererLineEndType } from './renderer';
 import { RepeatNote } from './repeatnote';
 import { Stave } from './stave';
-import { Barline, BarlineType } from './stavebarline';
+import { Barline, BarlineType, RepeatBracketType } from './stavebarline';
 import { StaveConnector } from './staveconnector';
 import { StaveHairpin } from './stavehairpin';
 import { StaveLine } from './staveline';
@@ -195,6 +195,7 @@ export class Flow {
   static RendererBackends = RendererBackends;
   static RendererLineEndType = RendererLineEndType;
   static BarlineType = BarlineType;
+  static RepeatBracketType = RepeatBracketType;
   static StaveModifierPosition = StaveModifierPosition;
   static VoltaType = VoltaType;
   static TextBracketPosition = TextBracketPosition;
