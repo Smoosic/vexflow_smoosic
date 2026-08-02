@@ -6,7 +6,7 @@ import { Clef } from './clef';
 import { Element, ElementStyle } from './element';
 import { Font, FontInfo, FontStyle, FontWeight } from './font';
 import { KeySignature } from './keysignature';
-import { Barline, BarlineType } from './stavebarline';
+import { Barline, BarlineType, RepeatBracketType } from './stavebarline';
 import { StaveModifier, StaveModifierPosition } from './stavemodifier';
 import { Repetition } from './staverepetition';
 import { StaveSection } from './stavesection';
@@ -425,20 +425,20 @@ export class Stave extends Element {
   }
 
   // Bar Line functions
-  setBegBarType(type: number | BarlineType): this {
+  setBegBarType(type: number | BarlineType, repeatBracket: RepeatBracketType = RepeatBracketType.None): this {
     // Only valid bar types at beginning of stave is none, single or begin repeat
     const { SINGLE, REPEAT_BEGIN, NONE } = BarlineType;
     if (type === SINGLE || type === REPEAT_BEGIN || type === NONE) {
-      (this.modifiers[0] as Barline).setType(type);
+      (this.modifiers[0] as Barline).setType(type).setRepeatBracket(repeatBracket);
       this.formatted = false;
     }
     return this;
   }
 
-  setEndBarType(type: number | BarlineType): this {
+  setEndBarType(type: number | BarlineType, repeatBracket: RepeatBracketType = RepeatBracketType.None): this {
     // Repeat end not valid at end of stave
     if (type !== BarlineType.REPEAT_BEGIN) {
-      (this.modifiers[1] as Barline).setType(type);
+      (this.modifiers[1] as Barline).setType(type).setRepeatBracket(repeatBracket);
       this.formatted = false;
     }
     return this;
