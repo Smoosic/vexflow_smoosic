@@ -93,19 +93,20 @@ export class Annotation extends Modifier {
       const glyphWidth = note.getGlyphProps().getWidth();
       // Get the text width from the font metrics.
       const textWidth = textFormatter.getWidthForTextInPx(annotation.text);
-      if (annotation.horizontalJustification === AnnotationHorizontalJustify.RIGHT) {
-        maxLeftGlyphWidth = Math.max(glyphWidth, maxLeftGlyphWidth);
-        leftWidth = Math.max(leftWidth, textWidth) + Annotation.minAnnotationPadding;
-      } else if (annotation.horizontalJustification === AnnotationHorizontalJustify.LEFT) {
-        maxRightGlyphWidth = Math.max(glyphWidth, maxRightGlyphWidth);
-        rightWidth = Math.max(rightWidth, textWidth);
-      } else {
-        leftWidth = Math.max(leftWidth, textWidth / 2) + Annotation.minAnnotationPadding;
-        rightWidth = Math.max(rightWidth, textWidth / 2);
-        maxLeftGlyphWidth = Math.max(glyphWidth / 2, maxLeftGlyphWidth);
-        maxRightGlyphWidth = Math.max(glyphWidth / 2, maxRightGlyphWidth);
+      if (annotation.getReportWidth()) {
+        if (annotation.horizontalJustification === AnnotationHorizontalJustify.RIGHT) {
+          maxLeftGlyphWidth = Math.max(glyphWidth, maxLeftGlyphWidth);
+          leftWidth = Math.max(leftWidth, textWidth) + Annotation.minAnnotationPadding;
+        } else if (annotation.horizontalJustification === AnnotationHorizontalJustify.LEFT) {
+          maxRightGlyphWidth = Math.max(glyphWidth, maxRightGlyphWidth);
+          rightWidth = Math.max(rightWidth, textWidth);
+        } else {
+          leftWidth = Math.max(leftWidth, textWidth / 2) + Annotation.minAnnotationPadding;
+          rightWidth = Math.max(rightWidth, textWidth / 2);
+          maxLeftGlyphWidth = Math.max(glyphWidth / 2, maxLeftGlyphWidth);
+          maxRightGlyphWidth = Math.max(glyphWidth / 2, maxRightGlyphWidth);
+        }
       }
-
       const stave: Stave | undefined = note.getStave();
       const stemDirection = note.hasStem() ? note.getStemDirection() : Stem.UP;
       let stemHeight = 0;
@@ -181,6 +182,8 @@ export class Annotation extends Modifier {
   protected horizontalJustification: AnnotationHorizontalJustify;
   protected verticalJustification: AnnotationVerticalJustify;
   protected text: string;
+  protected reportWidth: boolean = true;
+
 
   /**
    * Annotations inherit from `Modifier` and is positioned correctly when
@@ -199,6 +202,14 @@ export class Annotation extends Modifier {
 
     // The default width is calculated from the text.
     this.setWidth(Tables.textWidth(text));
+  }
+  setReportWidth(value: boolean): this {
+    this.reportWidth = value;
+    return this;
+  }
+
+  getReportWidth(): boolean {
+    return this.reportWidth;
   }
   /**
    * Set vertical position of text (above or below stave).

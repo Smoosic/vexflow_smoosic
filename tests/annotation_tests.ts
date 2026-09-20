@@ -41,6 +41,7 @@ const AnnotationTests = {
     run('Harmonics', harmonic);
     run('Fingerpicking', picking);
     run('Bottom Annotation', bottom);
+    run('Bottom Report Width', bottomReportWidth);
     run('Bottom Annotations with Beams', bottomWithBeam);
     run('Test Justification Annotation Stem Up', justificationStemUp);
     run('Test Justification Annotation Stem Down', justificationStemDown);
@@ -310,6 +311,26 @@ function bottom(options: TestOptions, contextBuilder: ContextBuilder): void {
     staveNote({ keys: ['a/4'], duration: 'w' }).addModifier(annotation('A'), 0),
     staveNote({ keys: ['c/5'], duration: 'w' }).addModifier(annotation('C'), 0),
     staveNote({ keys: ['e/5'], duration: 'w' }).addModifier(annotation('E'), 0),
+  ];
+
+  Formatter.FormatAndDraw(ctx, stave, notes);
+  options.assert.ok(true, 'Bottom Annotation');
+}
+function bottomReportWidth(options: TestOptions, contextBuilder: ContextBuilder): void {
+  // turn width-reporting off
+  const ctx = contextBuilder(options.elementId, 500, 240);
+  ctx.scale(1.5, 1.5);
+
+  const stave = new Stave(10, 10, 300).addClef('treble').setContext(ctx).draw();
+
+  const annotation = (text: string) =>
+    new Annotation(text).setFont(Font.SERIF, FONT_SIZE).setReportWidth(false).setVerticalJustification(Annotation.VerticalJustify.BOTTOM);
+
+  const notes = [
+    staveNote({ keys: ['f/4'], duration: 'w' }).addModifier(annotation('Fffff'), 0),
+    staveNote({ keys: ['a/4'], duration: 'w' }).addModifier(annotation('AaaaaAaaaaAaaaa'), 0),
+    staveNote({ keys: ['c/5'], duration: 'w' }).addModifier(annotation('Ccccc'), 0),
+    staveNote({ keys: ['e/5'], duration: 'w' }).addModifier(annotation('Eeeeee'), 0),
   ];
 
   Formatter.FormatAndDraw(ctx, stave, notes);
